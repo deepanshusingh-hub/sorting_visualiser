@@ -189,9 +189,9 @@ async function quickSort(low,high)
                 var x=arr[i];
                 arr[i]=arr[j];
                 arr[j]=x;
-                element1.style.backgroundColor="green";
+                //element1.style.backgroundColor="green";
                 const result2 = await resolveAfter2Seconds();
-                element1.style.backgroundColor="yellow";
+                //element1.style.backgroundColor="yellow";
             }
             
         }
@@ -206,8 +206,14 @@ async function quickSort(low,high)
             var x=arr[i+1];
             arr[i+1]=arr[high];
             arr[high]=x;
+            //ell1.style.backgroundColor="green";
         var pi=i+1;
         quickSort(low,pi-1);
         quickSort(pi+1,high);
+    }
+    for(var i=0;i<100;i++)
+    {
+        var el=document.getElementById("bar"+i);
+        el.style.backgroundColor="green";
     }
 }
