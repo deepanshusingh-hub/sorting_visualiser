@@ -3,11 +3,23 @@ var newArr=document.querySelector('.newArr');
 var bubbleSrt=document.querySelector('.BubbleSort');
 var selectionSrt=document.querySelector('.Selectionsort');
 var quickSrt=document.querySelector('.QuickSort');
+var array_size=document.getElementById('arr_sz').value;
+var arr_sz=document.getElementById('arr_sz');
+// arr_sz.addEventListener('mousedown',()=>{
+//     array_size=arr_sz.value;
+//     clearSpace();
+//     clearArray();
+//     createRandomArray();
+//     createGraph();
+// })
 var arr=[];
 
 newArr.addEventListener('click',()=>{
+    
     clearSpace();
     clearArray();
+    array_size=document.getElementById('arr_sz').value;
+    //console.log(array_size);
     createRandomArray();    
     createGraph();
 
@@ -16,7 +28,7 @@ bubbleSrt.addEventListener('click',bubbleSort);
 selectionSrt.addEventListener('click',selectionSort);
 quickSrt.addEventListener('click',()=>{
     console.log("here");
-    quickSort(0,99);
+    quickSort(0,array_size-1);
 });
 function clearArray()
 {
@@ -24,7 +36,7 @@ function clearArray()
 }
 function createRandomArray()
 {
-    for(var i=0;i<100;i++)
+    for(var i=0;i<array_size;i++)
     {
         var x=Math.floor(Math.random()*100)+1;
         arr.push(x);
@@ -32,7 +44,7 @@ function createRandomArray()
 }
 function createGraph()  // to create a graph of different heights based on elements of array
 {
-    for(var i=0;i<100;i++)
+    for(var i=0;i<array_size;i++)
     {   
         var bar=document.createElement("div"); //add a div tag
         bar.classList.add("bar"); // add a class to a tag
@@ -43,7 +55,7 @@ function createGraph()  // to create a graph of different heights based on eleme
 }
 function clearSpace()  //to clear the initial graph created
 {
-    for(var i=0;i<100;i++)
+    for(var i=0;i<array_size;i++)
     {   //console.log(document.getElementById("bar"+i));
         var myObj=document.getElementById("bar"+i);
         if(myObj!=null)myObj.remove();
@@ -51,10 +63,12 @@ function clearSpace()  //to clear the initial graph created
 }
 
 function resolveAfter2Seconds() {
+    var speed=document.getElementById('spd').value;
+    //console.log(speed);
     return new Promise(resolve => {
       setTimeout(() => {
         resolve('resolved');
-      }, 100);
+      }, 100-speed);
     });
   }
   
@@ -74,9 +88,9 @@ async function swap(el1,el2)  //functio to swap two bars in html
 
 async function bubbleSort()
 {   
-    for(var i=0;i<99;i++)
+    for(var i=0;i<array_size-1;i++)
     {
-        for(var j=0;j<100-i-1;j++)
+        for(var j=0;j<array_size-i-1;j++)
         {
             if(arr[j]>arr[j+1])
             {   
@@ -104,10 +118,10 @@ async function bubbleSort()
 
 async function selectionSort()
 {
-    for(var i=0;i<99;i++)
+    for(var i=0;i<array_size-1;i++)
     {
         var min_index=i;
-        for(var j=i+1;j<100;j++)
+        for(var j=i+1;j<array_size;j++)
         {
             if(arr[j]<arr[min_index])min_index=j;
         }
@@ -189,9 +203,9 @@ async function quickSort(low,high)
                 var x=arr[i];
                 arr[i]=arr[j];
                 arr[j]=x;
-                //element1.style.backgroundColor="green";
+                element1.style.backgroundColor="green";
                 const result2 = await resolveAfter2Seconds();
-                //element1.style.backgroundColor="yellow";
+                element1.style.backgroundColor="yellow";
             }
             
         }
@@ -206,12 +220,13 @@ async function quickSort(low,high)
             var x=arr[i+1];
             arr[i+1]=arr[high];
             arr[high]=x;
-            //ell1.style.backgroundColor="green";
+            ell1.style.backgroundColor="green";
+            ell2.style.backgroundColor="green";
         var pi=i+1;
         quickSort(low,pi-1);
         quickSort(pi+1,high);
     }
-    for(var i=0;i<100;i++)
+    for(var i=0;i<array_size;i++)
     {
         var el=document.getElementById("bar"+i);
         el.style.backgroundColor="green";

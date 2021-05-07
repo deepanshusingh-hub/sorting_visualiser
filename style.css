@@ -19,8 +19,16 @@ h1{
     border:3px solid coral;
 }
 
+.arr_size{
+    margin-left: 3%;
+    color: white;
+}
+.speed{
+    margin-left: 3%;
+    color: white;
+}
 .BubbleSort{
-    margin-left: 40%;
+    margin-left: 5%;
 }
 
 .graph
