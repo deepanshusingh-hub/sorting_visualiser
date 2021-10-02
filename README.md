@@ -8,7 +8,7 @@ Technology used - HTML, CSS, Javascript
   git clone https://link-to-project
 
 ````
-## [Demo Images](ss1.png)
-## [Demo Images](ss2.png)
-## [Demo Images](ss3.png)
-## [Demo Images](ss4.png)
+![Demo Images](ss1.png)
+![Demo Images](ss2.png)
+![Demo Images](ss3.png)
+![Demo Images](ss4.png)
